@@ -1,0 +1,15 @@
+FROM node
+
+WORKDIR /app
+
+# to optimize build cache usage, copy this file first, so docker build would know that this file is not changed, so the 'npm install' result can be cached and skipped.
+COPY package.json /app
+
+RUN npm install
+
+# faster to place here so the 'npm install' could be properly cached.
+COPY . ./
+
+EXPOSE 80
+
+CMD ["node" "server.js"]
