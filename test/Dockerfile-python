@@ -1,0 +1,15 @@
+# python as base image
+FROM python
+
+WORKDIR /app
+
+COPY . /app/
+
+# run python script
+CMD ["python", "main.py"]
+
+# the resulting image must be ran in termianal and interactive mode if an input needs to be passed through the terminal.
+
+# run with:
+# docker run -it <image id>
+# docker start -a -i <image id>
